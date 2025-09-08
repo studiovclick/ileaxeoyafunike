@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa dos Orixás - Centro de Cultura e Espiritualidade</title>
+    <meta name="description"
+        content="Conheça a cultura dos Orixás, suas histórias, energias e significados. Casa de respeito e aprendizado sobre as tradições africanas.">
+    <!-- Font Awesome para ícones sociais e dos Orixás -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS para utilitários de layout e cor -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    // Configuração de cores customizadas do Tailwind
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'orixa-purple': '#4c1d95',
+                    'orixa-lightpurple': '#7e22ce',
+                    'orixa-pink': '#c084fc',
+                    'orixa-red': '#dc2626',
+                    'orixa-lightred': '#ef4444',
+                    'orixa-yellow': '#f59e0b'
+                }
+            }
+        }
+    }
+    </script>
+    <!-- Alpine.js para interatividade (não interfere na aparência, mas pode ser usado para menus animados) -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+    /* Importação de fontes para títulos e textos */
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
+
+    :root {
+        /* Cores principais do tema */
+        --color-primary: #4c1d95;
+        --color-secondary: #7e22ce;
+        --color-accent: #c084fc;
+    }
+
+    body {
+        /* Fonte e fundo geral do site */
+        font-family: 'Quicksand', sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        color: #334155;
+        scroll-behavior: smooth;
+    }
+
+    .title-text {
+        /* Gradiente nos títulos principais */
+        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+        font-family: 'Merriweather', serif;
+        font-weight: 700;
+    }
+
+    .header-container {
+        /* Banner de fundo do topo */
+        background-image: url('banner sie.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgb(0, 0, 0, .1);
+    }
+
+    .header-container::before {
+        /* Sobreposição escura para contraste do texto no banner */
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, .4);
+        z-index: 0;
+    }
+
+    .orixa-btn {
+        /* Botões com gradiente e efeito de brilho ao passar o mouse */
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #fecaca 100%);
+        transition: all .4s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+        border: none;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: .5px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .orixa-btn::before {
+        /* Efeito de brilho animado no hover do botão */
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+        transition: left .7s ease;
+    }
+
+    .orixa-btn:hover::before {
+        left: 100%;
+    }
+
+    .orixa-btn:hover {
+        /* Mudança de cor e leve elevação no hover */
+        background: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #fecaca 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(220, 38, 38, .25);
+    }
+
+    .menu-btn {
+        /* Botão do menu animado */
+        background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fde68a 100%);
+        transition: all .3s ease;
+    }
+
+    .menu-btn:hover {
+        /* Efeito de elevação no hover do menu */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(245, 158, 11, .3);
+    }
+
+    .youtube-btn {
+        /* Botão do YouTube com gradiente */
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #fca5a5 100%);
+        transition: all .3s ease;
+    }
+
+    .youtube-btn:hover {
+        /* Efeito de elevação no hover do botão do YouTube */
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(220, 38, 38, .3);
+    }
+
+    .social-btn {
+        /* Botões das redes sociais: transição e formato circular */
+        transition: all .3s ease;
+    }
+
+    .social-btn:hover {
+        /* Efeito de elevação e rotação no hover dos botões sociais */
+        transform: translateY(-3px) rotate(5deg);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
+    }
+
+    .brasao-container {
+        /* Fundo e sombra do topo fixo com brasão */
+        background: linear-gradient(to bottom, #fff, #f8fafc);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    }
+
+    .floating {
+        /* Animação de flutuação para elementos decorativos */
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(0)
+        }
+        50% {
+            transform: translateY(-10px)
+        }
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    .card {
+        /* Cartões dos Orixás e outras seções */
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
+        transition: all .3s ease;
+        overflow: hidden;
+    }
+
+    .card:hover {
+        /* Efeito de elevação no hover dos cards */
+        transform: translateY(-5px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+    }
+
+    .orixa-icon {
+        /* Ícones grandes dos Orixás */
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        transition: all .3s ease;
+    }
+
+    .card:hover .orixa-icon {
+        /* Ícone cresce no hover do card */
+        transform: scale(1.1);
+    }
+
+    .nav-item {
+        /* Links do menu de navegação: posição relativa para underline animado */
+        position: relative;
+    }
+
+    .nav-item::after {
+        /* Underline animado nos links do menu */
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+        transition: width .3s ease;
+    }
+
+    .nav-item:hover::after {
+        width: 100%;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px)
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0)
+        }
+    }
+
+    .animate-fade-in {
+        /* Animação de fade-in para seções ao carregar */
+        animation: fadeIn .6s ease forwards;
+    }
+
+    .delay-100 { animation-delay: .1s }
+    .delay-200 { animation-delay: .2s }
+    .delay-300 { animation-delay: .3s }
+
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: .01ms !important
+        }
+    }
+
+    @media (prefers-color-scheme: dark) {
+        /* Estilos para modo escuro */
+        body {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: #e2e8f0;
+        }
+        .card {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        .brasao-container {
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+        }
+    }
+
+    .orixa-image {
+        /* Imagens dos Orixás nos cards */
+        width: 90%;
+        height: 280px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-top: 1rem;
+        transition: all .3s ease;
+    }
+
+    .card:hover .orixa-image {
+        /* Imagem cresce no hover do card */
+        transform: scale(1.5);
+    }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- HEADER FIXO -->
+    <header class="sticky top-0 z-10 bg-white shadow-md">
+      <!-- Div do banner ocupando toda a largura -->
+      <div 
+        class="w-full flex flex-col items-center py-4 relative rounded-lg overflow-hidden"
+        style="background-image: url('banner sie.png'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 320px;">
+        <!-- Sobreposição escura para contraste -->
+        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:1;"></div>
+        <!-- Conteúdo do topo (brasão e textos) -->
+        <img src="brasao.png" alt="Brasão da Casa dos Orixás" class="w-32 h-32 mx-auto relative z-10" />
+        <h2 class="title-text text-4xl md:text-6xl font-bold text-center mt-4 px-4 relative z-10">Sociedade Beneficente e Cultural</h2>
+        <p class="text-slate-100 dark:text-slate-300 text-center mt-2 max-w-2xl px-4 relative z-10">
+          Oyá - Ogum - Oxalá
+        </p>
+      </div>
+    </header>
+
+    <!-- CONTEÚDO -->
+    <main class="flex-grow container mx-auto px-4 py-8">
+<!-- Cards dos Orixás -->
+<section id="orixas" class="mb-16 animate-fade-in">
+  <h1 class="title-text text-3xl font-bold text-center mb-8">Conheça os Orixás</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <!-- Oyá -->
+    <div class="card p-6 text-center">
+      <div class="orixa-icon" style="color:#dc2626;"><i class="fas fa-wind"></i></div>
+      <h3 class="text-xl font-bold text-slate-800 mb-2">OYÁ (Iansã)</h3>
+      <p class="text-slate-600 mb-4">Orixá dos ventos, tempestades e passagem entre mundos. Senhora dos raios e dona do cemitério.</p>
+      <img src="oya.jpg" alt="Imagem de Oyá" class="orixa-image mx-auto">
+    </div>
+    <!-- Ogum -->
+    <div class="card p-6 text-center">
+      <div class="orixa-icon" style="color:#2563eb;"><i class="fas fa-shield-alt"></i></div>
+      <h2 class="text-xl font-bold text-slate-800 mb-2">OGUM</h3>
+      <p class="text-slate-600 mb-4">Orixá do ferro, guerra e tecnologia. Guerreiro valente que abre caminhos e remove obstáculos.</p>
+      <img src="ogum.png" alt="Imagem de Ogum" class="orixa-image mx-auto">
+    </div>
+    <!-- Oxalá -->
+    <div class="card p-6 text-center">
+      <div class="orixa-icon" style="color:#fff; background:#7e22ce; border-radius:50%; padding:0.5rem 0.7rem; display:inline-block;"><i class="fas fa-dove"></i></div>
+      <h3 class="text-xl font-bold text-slate-800 mb-2">OXALÁ</h3>
+      <p class="text-slate-600 mb-4">Orixá da criação, paz e pureza. Pai maior que veste branco e representa a sabedoria e tranquilidade.</p>
+      <img src="oxala.jpg" alt="Imagem de Oxalá" class="orixa-image mx-auto">
+    </div>
+  </div>
+</section>
+
+      <!-- Galeria de Fotos em cards igual aos Orixás -->
+      <section id="galeria" class="mt-16 max-w-6xl mx-auto animate-fade-in">
+        <h2 class="title-text text-3xl font-bold text-center mb-8">Galeria</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Foto 1 -->
+          <div class="card p-6 text-center">
+            <img src="bruna.jpg" alt="Mãe Bruna D Ogum" class="orixa-image mx-auto mb-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Mãe Bruna D' Ogum</h3>
+          </div>
+          <!-- Foto 2 -->
+          <div class="card p-6 text-center">
+            <img src="isabel.jpg" alt="Mãe Isabel D' Oyá" class="orixa-image mx-auto mb-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Mãe Isabel D' Oyá</h3>
+            <p class="text-slate-600 mb-4">Fundadora do Axé Funiké</p>
+          </div>
+          <!-- Foto 3 -->
+          <div class="card p-6 text-center">
+            <img src="juliana.jpg" alt="Mãe Juliana D' Oxala" class="orixa-image mx-auto mb-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Mãe Juliana D' Oxalá</h3>
+          </div>
+          <!-- Foto 4 -->
+          <div class="card p-6 text-center">
+            <img src="foto4.jpg" alt="Foto 4" class="orixa-image mx-auto mb-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Foto 4</h3>
+          </div>
+          <!-- Foto 5 -->
+          <div class="card p-6 text-center">
+            <img src="foto5.jpg" alt="Foto 5" class="orixa-image mx-auto mb-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Foto 5</h3>
+          </div>
+          <!-- Foto 6 -->
+          <div class="card p-6 text-center">
+            <img src="foto6.jpg" alt="Foto 6" class="orixa-image mx-auto mb-4">
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Foto 6</h3>
+          </div>
+        </div>
+        <!-- Galeria de Vídeos em cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+          <!-- Vídeo 1 -->
+          <div class="card p-6 text-center">
+            <div class="relative pb-[56.25%] h-0 mb-4">
+              <iframe class="absolute top-0 left-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/b6aNpMDHNk4" title="Vídeo 1" allowfullscreen></iframe>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Vídeo 1</h3>
+          </div>
+          <!-- Vídeo 2 -->
+          <div class="card p-6 text-center">
+            <div class="relative pb-[56.25%] h-0 mb-4">
+              <iframe class="absolute top-0 left-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/b6aNpMDHNk4" title="Vídeo 2" allowfullscreen></iframe>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Vídeo 2</h3>
+          </div>
+          <!-- Vídeo 3 -->
+          <div class="card p-6 text-center">
+            <div class="relative pb-[56.25%] h-0 mb-4">
+              <iframe class="absolute top-0 left-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/b6aNpMDHNk4" title="Vídeo 3" allowfullscreen></iframe>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Vídeo 3</h3>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter -->
+      <section id="contato" class="mt-16 max-w-2xl mx-auto card p-8 animate-fade-in">
+        <h2 class="title-text text-2xl font-bold text-center mb-4">Fique por dentro</h2>
+        <p class="text-center text-slate-600 dark:text-slate-300 mb-6">
+          Receba informações sobre eventos, cerimônias e conteúdos exclusivos
+        </p>
+        <form class="flex flex-col md:flex-row gap-2" action="newsletter.php" method="POST" novalidate>
+          <input type="text" name="nome" placeholder="Seu nome" required class="flex-grow px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orixa-purple" />
+          <p><input type="email" name="email" placeholder="Seu melhor e-mail" required class="flex-grow px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orixa-purple" /></p>
+          <input type="text" name="hp_field" style="display:none" tabindex="-1" autocomplete="off">
+          <button type="submit" class="orixa-btn px-6 py-2 rounded-full">Inscrever</button>
+        </form>
+      </section>
+    </main>
+        <!-- Área de Agendamento via WhatsApp -->
+    <section id="agendamento" class="mt-16 max-w-2xl mx-auto card p-8 animate-fade-in">
+      <h2 class="title-text text-2xl font-bold text-center mb-4">Agende seu atendimento</h2>
+      <p class="text-center text-slate-600 dark:text-slate-300 mb-6">
+        Preencha seus dados, escolha o serviço, a responsável e envie seu agendamento direto pelo WhatsApp.
+      </p>
+      <form id="formAgendamento" class="flex flex-col gap-4" onsubmit="return enviarAgendamentoWhatsApp(event)">
+        <input type="text" name="nome" id="agendamentoNome" placeholder="Seu nome" required
+          class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orixa-purple" />
+    
+        <select name="servico" id="agendamentoServico" required
+          class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orixa-purple">
+          <option value="" disabled selected>Selecione o serviço</option>
+          <option value="Jogos de cartas">Jogos de cartas</option>
+          <option value="Jogo de búzios">Jogo de búzios</option>
+          <option value="Banhos">Banhos</option>
+          <option value="Atendimento presencial">Atendimento presencial</option>
+          <option value="Atendimento online">Atendimento online</option>
+        </select>
+    
+        <select name="responsavel" id="agendamentoResponsavel" required
+          class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orixa-purple">
+          <option value="" disabled selected>Selecione a responsável</option>
+          <option value="Mãe Juliana D' Oxalá" data-whatsapp="5551985383866">Mãe Juliana D' Oxalá</option>
+          <option value="Mãe Bruna D' Ogum" data-whatsapp="5551991069878">Mãe Bruna D' Ogum</option>
+        </select>
+    
+        <button type="submit" class="orixa-btn px-6 py-2 rounded-full">Agendar via WhatsApp</button>
+      </form>
+    </section>
+    
+    <script>
+    // Função para enviar o agendamento para o WhatsApp correto
+    function enviarAgendamentoWhatsApp(event) {
+      event.preventDefault();
+      const nome = document.getElementById('agendamentoNome').value.trim();
+      const servicoSelect = document.getElementById('agendamentoServico');
+      const servico = servicoSelect.value;
+      const servicoText = servicoSelect.options[servicoSelect.selectedIndex].text;
+      const responsavelSelect = document.getElementById('agendamentoResponsavel');
+      const responsavel = responsavelSelect.value;
+      const responsavelText = responsavelSelect.options[responsavelSelect.selectedIndex].text;
+      const whatsapp = responsavelSelect.options[responsavelSelect.selectedIndex].getAttribute('data-whatsapp');
+
+      if (!nome || !servico || !responsavel || !whatsapp) {
+        alert('Preencha todos os campos!');
+        return false;
+      }
+
+      // Monta a mensagem
+      const mensagem = encodeURIComponent(
+        `Olá! Meu nome é ${nome} e gostaria de agendar o serviço: ${servicoText} com ${responsavelText}.`
+      );
+
+      // Monta o link do WhatsApp
+      const link = `https://wa.me/${whatsapp}?text=${mensagem}`;
+
+      // Abre o WhatsApp em nova aba
+      window.open(link, '_blank');
+      return false;
+    }
+    </script>
+
+    <!-- FOOTER -->
+    <footer class="bg-gradient-to-b from-slate-800 to-slate-900 text-white py-12">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-xl font-bold mb-6">Siga-nos nas redes sociais</h3>
+        <div class="flex justify-center gap-6 mb-8">
+          <a href="https://facebook.com" aria-label="Facebook"
+             class="social-btn bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" aria-label="Instagram"
+             class="social-btn bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow">
+            <i class="fab fa-instagram"></i>
+          </a>
+         </div>
+        <p class="text-slate-400 text-sm">
+          © 2025 Casa dos Orixás - Todos os direitos reservados
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Exibe alerta após inscrição
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search || '');
+          var status = params.get('newsletter');
+          if (!status) return;
+          var msgMap = {
+            ok: 'Inscrição realizada com sucesso! 🎉',
+            duplicado: 'Este e-mail já está inscrito.',
+            invalido: 'Informe um nome e e-mail válidos.',
+            erro: 'Erro ao salvar inscrição. Tente novamente.'
+          };
+          var text = msgMap[status] || 'Status desconhecido.';
+          var box = document.createElement('div');
+          box.className =
+            'max-w-2xl mx-auto mb-4 px-4 py-3 rounded-lg shadow ' +
+            (status === 'ok'
+              ? 'bg-green-100 text-green-800'
+              : 'bg-red-100 text-red-800');
+          box.innerHTML =
+            '<i class="' +
+            (status === 'ok'
+              ? 'fas fa-check-circle'
+              : 'fas fa-exclamation-triangle') +
+            ' mr-2"></i> ' +
+            text;
+          var contato = document.getElementById('contato');
+          if (contato) contato.prepend(box);
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+
+</html>
