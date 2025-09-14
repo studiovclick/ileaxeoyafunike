@@ -28,30 +28,23 @@
         }
     }
     </script>
-    <!-- Alpine.js para interatividade (não interfere na aparência, mas pode ser usado para menus animados) -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
-    /* Importação de fontes para títulos e textos */
     @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Merriweather:wght@300;400;700&display=swap');
 
     :root {
-        /* Cores principais do tema */
         --color-primary: #4c1d95;
         --color-secondary: #7e22ce;
         --color-accent: #c084fc;
     }
 
     body {
-        /* Fonte e fundo geral do site */
         font-family: 'Quicksand', sans-serif;
         background: linear-gradient(135deg, #f1f1f1 0%, #e2e8f0 100%);
         color: #334155;
         scroll-behavior: smooth;
     }
 
-
     .header-container {
-        /* Banner de fundo do topo */
         background-image: url('banner sie.png'); 
         background-size: cover;
         background-position: center;
@@ -65,7 +58,6 @@
     }
 
     .header-container::before {
-        /* Sobreposição escura para contraste do texto no banner */
         content: '';
         position: absolute;
         inset: 0;
@@ -74,7 +66,6 @@
     }
 
     .orixa-btn {
-        /* Botões com gradiente e efeito de brilho ao passar o mouse */
         background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #fecaca 100%);
         transition: all .4s ease;
         box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
@@ -87,7 +78,6 @@
     }
 
     .orixa-btn::before {
-        /* Efeito de brilho animado no hover do botão */
         content: '';
         position: absolute;
         top: 0;
@@ -103,55 +93,46 @@
     }
 
     .orixa-btn:hover {
-        /* Mudança de cor e leve elevação no hover */
         background: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #fecaca 100%);
         transform: translateY(-2px);
         box-shadow: 0 6px 12px rgba(220, 38, 38, .25);
     }
 
     .menu-btn {
-        /* Botão do menu animado */
         background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #fde68a 100%);
         transition: all .3s ease;
     }
 
     .menu-btn:hover {
-        /* Efeito de elevação no hover do menu */
         transform: translateY(-2px);
         box-shadow: 0 6px 12px rgba(245, 158, 11, .3);
     }
 
     .youtube-btn {
-        /* Botão do YouTube com gradiente */
         background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #fca5a5 100%);
         transition: all .3s ease;
     }
 
     .youtube-btn:hover {
-        /* Efeito de elevação no hover do botão do YouTube */
         transform: translateY(-2px);
         box-shadow: 0 6px 12px rgba(220, 38, 38, .3);
     }
 
     .social-btn {
-        /* Botões das redes sociais: transição e formato circular */
         transition: all .3s ease;
     }
 
     .social-btn:hover {
-        /* Efeito de elevação e rotação no hover dos botões sociais */
         transform: translateY(-3px) rotate(5deg);
         box-shadow: 0 6px 12px rgba(0, 0, 0, .15);
     }
 
     .brasao-container {
-        /* Fundo e sombra do topo fixo com brasão */
         background: linear-gradient(to bottom, #fff, #f8fafc);
         box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
     }
 
     .floating {
-        /* Animação de flutuação para elementos decorativos */
         animation: float 6s ease-in-out infinite;
     }
 
@@ -168,19 +149,17 @@
     }
 
     .card {
-        /* Cartões dos Orixás e outras seções */
         background: #fff;
         border-radius: 16px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, .08);
         transition: all .3s ease;
         overflow: hidden;
-        color: #000000; /* azul escuro */
+        color: #000000;
     }
 
     .card:hover {
-        /* Efeito de elevação no hover dos cards */
         transform: translateY(-3px);
-        box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
+        box-shadow: 0 12px 28px rgba(226, 7, 7, 0.87);
     }
 
     .card:active,
@@ -190,24 +169,20 @@
     }
 
     .orixa-icon {
-        /* Ícones grandes dos Orixás */
         font-size: 2.5rem;
         margin-bottom: 1rem;
-        transition: all .3s ease;
+        transition: all .5s ease;
     }
 
     .card:hover .orixa-icon {
-        /* Ícone cresce no hover do card */
-        transform: scale(1.1);
+        transform: scale(1.5);
     }
 
     .nav-item {
-        /* Links do menu de navegação: posição relativa para underline animado */
         position: relative;
     }
 
     .nav-item::after {
-        /* Underline animado nos links do menu */
         content: '';
         position: absolute;
         bottom: -5px;
@@ -234,8 +209,7 @@
     }
 
     .animate-fade-in {
-        /* Animação de fade-in para seções ao carregar */
-        animation: fadeIn .6s ease forwards;
+        animation: fadeIn 1.3s ease forwards;
     }
 
     .delay-100 { animation-delay: .1s }
@@ -250,8 +224,8 @@
         }
     }
 
+    /* Removido modo escuro não utilizado
     @media (prefers-color-scheme: dark) {
-        /* Estilos para modo escuro */
         body {
             background: linear-gradient(135deg, #7b95be 0%, #334155 100%);
             color: #e2e8f0;
@@ -264,9 +238,9 @@
             background: linear-gradient(to bottom, #1e293b, #0f172a);
         }
     }
+    */
 
     .orixa-image {
-        /* Imagens dos Orixás nos cards */
         width: 90%;
         height: 280px;
         object-fit: cover;
@@ -274,21 +248,22 @@
         margin-top: 1rem;
         transition: all .3s ease;
     }
+    /* Removido efeito de ampliação das imagens dos Orixás
+    .card:hover .orixa-image {
+        transform: scale(1.5);
+    }
+    */
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
     <!-- HEADER FIXO -->
     <header class="bg-white shadow-md">
-      <!-- Div do banner ocupando toda a largura -->
       <div 
         class="w-full flex flex-col items-center py-4 relative rounded-lg overflow-hidden"
         style="background-image: url('banner sie.png'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 320px;">
-        <!-- Sobreposição escura para contraste -->
-        <!--<div style="position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:1;"></div>
-        <!-- Conteúdo do topo (brasão e textos) -->
         <img src="brasao.png" alt="Brasão da Casa dos Orixás" class="w-32 h-32 mx-auto relative z-10" />
         <h2 class="title-text text-4xl md:text-6xl font-bold text-center mt-4 px-4 relative z-10">Sociedade Beneficente e Cultural</h2>
-        <p class="text-slate-100 dark:text-slate-300 text-center mt-2 max-w-2xl px-4 relative z-10">
+        <p class="text-slate-100 text-center mt-2 max-w-2xl px-4 relative z-10">
           Oyá - Ogum - Oxalá
         </p>
       </div>
@@ -298,7 +273,7 @@
     <main class="flex-grow container mx-auto px-4 py-8">
 <!-- Cards dos Orixás -->
 <section id="orixas" class="mb-16 animate-fade-in">
-  <h1 class="title-text text-3xl font-bold text-center mb-8">Conheça os Orixás</h2>
+  <h1 class="title-text text-3xl font-bold text-center mb-8">Conheça os Orixás</h1>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     <!-- Oyá -->
     <div class="card p-6 text-center">
@@ -310,7 +285,7 @@
     <!-- Ogum -->
     <div class="card p-6 text-center">
       <div class="orixa-icon" style="color:#2563eb;"><i class="fas fa-shield-alt"></i></div>
-      <h2 class="text-xl font-bold text-slate-800 mb-2">OGUM</h3>
+      <h2 class="text-xl font-bold text-slate-800 mb-2">OGUM</h2>
       <p class="text-slate-600 mb-4">Orixá do ferro, guerra e tecnologia. Guerreiro valente que abre caminhos e remove obstáculos.</p>
       <img src="ogum.png" alt="Imagem de Ogum" class="orixa-image mx-auto">
     </div>
@@ -344,27 +319,23 @@
             <img src="juliana.jpg" alt="Mãe Juliana D' Oxala" class="orixa-image mx-auto mb-4">
             <h3 class="text-lg font-bold text-slate-800 mb-2">Mãe Juliana D' Oxalá</h3>
           </div>
-          <!-- Foto 4 -->
-          
         </div>
         <!-- Galeria de Vídeos em cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          
           <!-- Vídeo 2 -->
           <div class="card p-6 text-center">
             <div class="relative pb-[56.25%] h-0 mb-4">
               <iframe class="absolute top-0 left-0 w-full h-full rounded-lg" src="https://www.youtube.com/embed/b6aNpMDHNk4" title="Vídeo 2" allowfullscreen></iframe>
             </div>
-            <h3 class="text-lg font-bold text-slate-800 mb-2">Vídeo 2</h3>
+            <h3 class="text-lg font-bold text-slate-800 mb-2">Entrevista Grande Axé</h3>
           </div>
-          
         </div>
       </section>
 
       <!-- Newsletter -->
       <section id="contato" class="mt-16 max-w-2xl mx-auto card p-8 animate-fade-in">
         <h2 class="title-text text-2xl font-bold text-center mb-4">Fique por dentro</h2>
-        <p class="text-center text-slate-600 dark:text-slate-300 mb-6">
+        <p class="text-center text-slate-600 mb-6">
           Receba informações sobre eventos, cerimônias e conteúdos exclusivos
         </p>
         <form class="flex flex-col md:flex-row gap-2" action="newsletter.php" method="POST" novalidate>
@@ -378,7 +349,7 @@
         <!-- Área de Agendamento via WhatsApp -->
     <section id="agendamento" class="mt-16 max-w-2xl mx-auto card p-8 animate-fade-in">
       <h2 class="title-text text-2xl font-bold text-center mb-4">Agende seu atendimento</h2>
-      <p class="text-center text-slate-600 dark:text-slate-300 mb-6">
+      <p class="text-center text-slate-600 mb-6">
         Preencha seus dados, escolha o serviço, a responsável e envie seu agendamento direto pelo WhatsApp.
       </p>
       <form id="formAgendamento" class="flex flex-col gap-4" onsubmit="return enviarAgendamentoWhatsApp(event)">
@@ -424,15 +395,12 @@
         return false;
       }
 
-      // Monta a mensagem
       const mensagem = encodeURIComponent(
         `Olá! Meu nome é ${nome} e gostaria de agendar o serviço: ${servicoText} com ${responsavelText}.`
       );
 
-      // Monta o link do WhatsApp
       const link = `https://wa.me/${whatsapp}?text=${mensagem}`;
 
-      // Abre o WhatsApp em nova aba
       window.open(link, '_blank');
       return false;
     }
