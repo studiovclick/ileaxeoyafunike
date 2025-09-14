@@ -44,25 +44,15 @@
     body {
         /* Fonte e fundo geral do site */
         font-family: 'Quicksand', sans-serif;
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        background: linear-gradient(135deg, #f1f1f1 0%, #e2e8f0 100%);
         color: #334155;
         scroll-behavior: smooth;
     }
 
-    .title-text {
-        /* Gradiente nos títulos principais */
-        background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-        font-family: 'Merriweather', serif;
-        font-weight: 700;
-    }
 
     .header-container {
         /* Banner de fundo do topo */
-        background-image: url('banner sie.png');
+        background-image: url('banner sie.png'); 
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -170,7 +160,7 @@
             transform: translateY(0)
         }
         50% {
-            transform: translateY(-10px)
+            transform: translateY(-5px)
         }
         100% {
             transform: translateY(0)
@@ -188,7 +178,7 @@
 
     .card:hover {
         /* Efeito de elevação no hover dos cards */
-        transform: translateY(-5px);
+        transform: translateY(-3px);
         box-shadow: 0 12px 28px rgba(0, 0, 0, .12);
     }
 
@@ -256,7 +246,7 @@
     @media (prefers-color-scheme: dark) {
         /* Estilos para modo escuro */
         body {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, #7b95be 0%, #334155 100%);
             color: #e2e8f0;
         }
         .card {
@@ -292,7 +282,7 @@
         class="w-full flex flex-col items-center py-4 relative rounded-lg overflow-hidden"
         style="background-image: url('banner sie.png'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 320px;">
         <!-- Sobreposição escura para contraste -->
-        <div style="position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:1;"></div>
+        <!--<div style="position:absolute; inset:0; background:rgba(0,0,0,0.35); z-index:1;"></div>
         <!-- Conteúdo do topo (brasão e textos) -->
         <img src="brasao.png" alt="Brasão da Casa dos Orixás" class="w-32 h-32 mx-auto relative z-10" />
         <h2 class="title-text text-4xl md:text-6xl font-bold text-center mt-4 px-4 relative z-10">Sociedade Beneficente e Cultural</h2>
@@ -352,7 +342,8 @@
             <img src="juliana.jpg" alt="Mãe Juliana D' Oxala" class="orixa-image mx-auto mb-4">
             <h3 class="text-lg font-bold text-slate-800 mb-2">Mãe Juliana D' Oxalá</h3>
           </div>
-         
+          <!-- Foto 4 -->
+          
         </div>
         <!-- Galeria de Vídeos em cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -511,7 +502,4 @@
     </script>
   </body>
 
-
 </html>
-
-
